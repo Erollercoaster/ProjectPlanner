@@ -1,0 +1,26 @@
+<div class="fixed inset-0 z-0 flex items-center justify-center bg-opacity-75">
+
+  <div id="category-modal-form" class="bg-white rounded-lg p-8 hidden shadow-md">
+    <button class="absolute top-4 right-4 text-gray-600 hover:text-gray-800 focus:outline-none close-modal-btn">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+
+    <%= form_for(@category, local: true) do |form| %>
+  <h1 class="mb-4 text-lg font-bold">Create a Category</h1>
+  <div class="mb-4">
+    <%= form.label :name, class: "block text-gray-700 text-sm font-bold mb-2" %>
+    <%= form.text_field :name, name: "category[name]", class: "appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+  </div>
+  <div class="mb-4">
+    <%= form.label :description, class: "block text-gray-700 text-sm font-bold mb-2" %>
+    <%= form.text_field :description, name: "category[description]", class: "appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+  </div>
+  <div class="flex justify-between">
+    <%= form.submit 'Create', class: 'btn btn-submit rounded-md px-4 py-2 bg-green-500 hover:bg-green-600 text-black hover:cursor-pointer' %>
+    <button type="button" class="btn btn-close rounded-md px-4 py-2 bg-red-500 hover:bg-red-600 text-black close-modal-btn">Close</button>
+  </div>
+<% end %>
+  </div>
+</div>

@@ -1,0 +1,6 @@
+<h1><%= @task.title %></h1>
+<p><%= @task.description %></p>
+
+<%= link_to "Back to Tasks", category_tasks_path(@category) %>
+<%= link_to "Edit Task", edit_category_task_path(@category, @task) %>
+<%= link_to "Delete Task", category_task_path(@category, @task), method: :delete, data: { confirm: "Are you sure?" } %>

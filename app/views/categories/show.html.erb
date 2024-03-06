@@ -1,0 +1,26 @@
+<div class="flex items-center justify-center h-screen flex-col">
+  <h1 class="mb-4"><%= @category.name %></h1>
+  <p><%= @category.description %></p>
+
+  <!-- Render new task form -->
+  <%= link_to "Add Task", new_category_task_path(@category), class: "mt-4 mb-2 px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600" %>
+
+  <!-- Render tasks index if there are tasks -->
+  <% if @category.tasks.any? %>
+    <h2 class="mt-8 mb-4 text-lg font-semibold">Tasks</h2>
+    <ul>
+      <% @category.tasks.each do |task| %>
+        <li>
+          <h3><%= task.title %></h3>
+          <p><%= task.description %></p>
+          <%= link_to "Edit", edit_category_task_path(@category, task) %>
+          <%= link_to "Delete", category_task_path(@category, task), method: :delete, data: { confirm: "Are you sure?" } %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No tasks available.</p>
+  <% end %>
+
+  <%= link_to 'Back', root_path, class: "mt-4" %>
+</div>
