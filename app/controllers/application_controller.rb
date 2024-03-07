@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
     private
   
     def set_categories
-      @categories = Category.all
+      @categories = current_user.categories.all if current_user
     end
   end
   

@@ -1,26 +1,66 @@
 <div class="flex items-center justify-center h-screen flex-col">
-  <h1 class="mb-4"><%= @category.name %></h1>
-  <p><%= @category.description %></p>
-
-  <!-- Render new task form -->
-  <%= link_to "Add Task", new_category_task_path(@category), class: "mt-4 mb-2 px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600" %>
-
-  <!-- Render tasks index if there are tasks -->
-  <% if @category.tasks.any? %>
-    <h2 class="mt-8 mb-4 text-lg font-semibold">Tasks</h2>
-    <ul>
-      <% @category.tasks.each do |task| %>
-        <li>
-          <h3><%= task.title %></h3>
-          <p><%= task.description %></p>
-          <%= link_to "Edit", edit_category_task_path(@category, task) %>
-          <%= link_to "Delete", category_task_path(@category, task), method: :delete, data: { confirm: "Are you sure?" } %>
-        </li>
-      <% end %>
-    </ul>
-  <% else %>
-    <p>No tasks available.</p>
+    <table class="w-2/4 rounded-md text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <caption class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white dark:text-white dark:bg-gray-800">
+            <div class="flex flex-col">
+    <div class="flex justify-between items-center">
+        <div>
+            <h1 class="mb-4"><%= @category.name %></h1>
+            <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400"><%= @category.description %></p>
+        </div>
+        <%= link_to "Add Task", new_category_task_path(@category), class: "px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600 text-sm" %>
+    </div>
+        </caption>
+        <thead class="text-xs text-gray-700 uppercase bg-yellow-200 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="p-4">
+                    <div class="flex items-center">
+                        <input id="checkbox-all-search" type="checkbox" class="ml-5 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <label for="checkbox-all-search" class="sr-only">checkbox</label>
+                    </div>
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Task
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Description
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Created At
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Due Date
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+  <% @category.tasks.each do |task| %>
+    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+      <td class="w-4 p-4">
+        <div class="flex items-center">
+          <input id="checkbox-table-<%= task.id %>" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+          <label for="checkbox-table-<%= task.id %>" class="sr-only">checkbox</label>
+        </div>
+      </td>
+      <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+        <%= task.title %>
+      </th>
+      <td class="px-6 py-4">
+        <%= task.description %>
+      </td>
+      <td class="px-6 py-4">
+        <%= task.created_at.strftime('%B %d, %Y') %>
+      </td>
+      <td class="px-6 py-4">
+        
+      </td>
+      <td class="px-6 py-4">
+        <%= link_to "Edit", edit_category_task_path(@category, task), class: "font-medium text-blue-600 dark:text-blue-500 hover:underline" %>
+      </td>
+    </tr>
   <% end %>
-
-  <%= link_to 'Back', root_path, class: "mt-4" %>
+</tbody>
+    </table>
 </div>

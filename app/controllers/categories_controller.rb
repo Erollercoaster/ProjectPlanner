@@ -16,8 +16,6 @@ class CategoriesController < ApplicationController
   def create
     @category = current_user.categories.build(category_params)
 
-    Rails.logger.debug(params.inspect)
-
     if @category.save
       redirect_to category_path(@category)
     else
