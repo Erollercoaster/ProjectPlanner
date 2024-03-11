@@ -1,9 +1,11 @@
 class DashboardController < ApplicationController
     before_action :authenticate_user!
-    
+      
     def index
-        @tasks = current_user.tasks
-        @categories = current_user.categories.all
-        @category = current_user.categories.build
+      @total_tasks_count = current_user.tasks.count
+      @most_urgent_task = current_user.tasks.order(:due_date).first
+      @tasks = current_user.tasks.order(:due_date)
+      @categories = current_user.categories.all
+      @category = current_user.categories.build
     end
-end
+  end

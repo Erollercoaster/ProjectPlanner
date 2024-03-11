@@ -15,9 +15,9 @@ class TasksController < ApplicationController
   end
 
   def create
-    @category = Category.find(params[:category_id]) # Retrieve the category
-    @task = @category.tasks.build(task_params) # Build a new task associated with the category
-    @task.user = current_user # Assign the current user to the task
+    @category = Category.find(params[:category_id])
+    @task = @category.tasks.build(task_params) 
+    @task.user = current_user 
   
     if @task.save
       redirect_to category_tasks_path(@category), notice: 'Task was successfully created.'
@@ -53,6 +53,6 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:title, :description)
+    params.require(:task).permit(:title, :description, :due_date)
   end
 end
