@@ -20,7 +20,7 @@ class TasksController < ApplicationController
     @task.user = current_user 
   
     if @task.save
-      redirect_to category_tasks_path(@category), notice: 'Task was successfully created.'
+      redirect_to category_path(@category), notice: 'Task was successfully created.'
     else
       render :new
     end
@@ -31,7 +31,7 @@ class TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
-      redirect_to category_tasks_path(@category), notice: 'Task was successfully updated.'
+      redirect_to category_path(@category), notice: 'Task was successfully updated.'
     else
       render :edit
     end
@@ -39,7 +39,7 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
-    redirect_to category_tasks_path(@category), notice: 'Task was successfully destroyed.'
+    redirect_to category_path(@category), notice: 'Task was successfully destroyed.'
   end
 
   private

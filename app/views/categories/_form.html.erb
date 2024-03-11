@@ -2,6 +2,16 @@
   <div class="bg-white rounded-lg p-8 shadow-md">
     <%= form_with(model: @category, url: category_path(@category), method: :patch, local: true) do |form| %>
       <h1 class="mb-4 text-lg font-bold">Update Category</h1>
+      <% if @category.errors.any? %>
+        <div class="bg-red-100 text-red-700 p-3 mb-4 rounded">
+          <h2 class="font-semibold">There were <%= pluralize(@category.errors.count, "error") %> with your submission:</h2>
+          <ul>
+            <% @category.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
       <div class="mb-4">
         <%= form.label :name, class: "block text-gray-700 text-sm font-bold mb-2" %>
         <%= form.text_field :name, class: "appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
@@ -10,12 +20,15 @@
         <%= form.label :description, class: "block text-gray-700 text-sm font-bold mb-2" %>
         <%= form.text_field :description, class: "appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
       </div>
-       <div class="flex justify-center gap-5">
+       <div class="flex justify-between">
+       <div>
         <%= form.submit 'Save', class: 'btn btn-submit rounded-md px-4 py-2 bg-green-500 hover:bg-green-600 text-black hover:cursor-pointer' %>
-        <%= button_to 'Delete', @category, method: :delete, data: { confirm: 'Are you sure?', "turbo-method": :delete, "turbo-confirm": "Are you sure?" }, class: 'btn btn-close rounded-md px-4 py-2 bg-red-500 hover:bg-red-600 text-black' %>
       </div>
-
-      <%= link_to 'Back', category_path, class: 'block mt-4 text-blue-600 hover:underline' %>
     <% end %>
+        <div>
+        <%= button_to 'Delete', @category, method: :delete, data: { confirm: 'Are you sure?', "turbo-method": :delete, "turbo-confirm": "Are you sure?" }, class: 'btn btn-close rounded-md px-4 py-2 bg-red-500 hover:bg-red-600 text-black' %>
+        </div>
+        </div>
+      <%= link_to 'Back', category_path, class: 'block mt-4 text-blue-600 hover:underline' %>
   </div>
 </div>
