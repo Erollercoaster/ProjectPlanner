@@ -20,3 +20,38 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Retrieve completed task IDs from localStorage
+  let completedTasks = JSON.parse(localStorage.getItem('completedTasks')) || [];
+
+  // Apply strikethrough to completed tasks
+  completedTasks.forEach(taskId => {
+    const taskRow = document.querySelector(`#task-row-${taskId}`);
+    if (taskRow) {
+      taskRow.classList.add('completed');
+    }
+  });
+
+  document.addEventListener('click', function(event) {
+    if (event.target.matches('input[type="checkbox"]')) {
+      const taskId = event.target.dataset.taskId;
+      const taskRow = document.querySelector(`#task-row-${taskId}`);
+      if (taskRow) {
+        if (event.target.checked) {
+          taskRow.classList.add('completed');
+          if (!completedTasks.includes(taskId)) {
+            completedTasks.push(taskId);
+          }
+        } else {
+          taskRow.classList.remove('completed');
+          const index = completedTasks.indexOf(taskId);
+          if (index !== -1) {
+            completedTasks.splice(index, 1);
+          }
+        }
+      }
+      localStorage.setItem('completedTasks', JSON.stringify(completedTasks));
+    }
+  });
+});

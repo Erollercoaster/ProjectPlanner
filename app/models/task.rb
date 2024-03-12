@@ -4,4 +4,6 @@ class Task < ApplicationRecord
 
   validates :title, presence: true
   validates :description, presence: true
+
+  attribute :completed, :boolean, default: false
 end
