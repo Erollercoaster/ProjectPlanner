@@ -2,7 +2,7 @@
     <div class="bg-white rounded-lg p-8 shadow-md">
       <%= form_with(model: [@category, @task], local: true) do |form| %>
         <% if @task.errors.any? %>
-          <div id="error_explanation">
+          <div id="error_explanation" class="text-red-600">
             <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
             <ul>
               <% @task.errors.full_messages.each do |message| %>

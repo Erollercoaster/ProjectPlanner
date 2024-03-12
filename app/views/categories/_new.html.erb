@@ -9,7 +9,6 @@
     <%= form_for(@category, local: true) do |form| %>
       <h1 class="mb-4 text-lg font-bold">Create a Category</h1>
 
-      <!-- Error Messages -->
       <% if @category.errors.any? %>
         <div class="bg-red-100 text-red-700 p-3 mb-4 rounded">
           <h2 class="font-semibold">There were <%= pluralize(@category.errors.count, "error") %> with your submission:</h2>
@@ -21,19 +20,16 @@
         </div>
       <% end %>
 
-      <!-- Name Field -->
       <div class="mb-4">
         <%= form.label :name, class: "block text-gray-700 text-sm font-bold mb-2" %>
         <%= form.text_field :name, name: "category[name]", class: "appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
       </div>
 
-      <!-- Description Field -->
       <div class="mb-4">
         <%= form.label :description, class: "block text-gray-700 text-sm font-bold mb-2" %>
         <%= form.text_field :description, name: "category[description]", class: "appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
       </div>
 
-      <!-- Submit Button -->
       <div class="flex justify-between">
         <%= form.submit 'Create', class: 'btn btn-submit rounded-md px-4 py-2 bg-green-500 hover:bg-green-600 text-black hover:cursor-pointer' %>
         <button type="button" class="btn btn-close rounded-md px-4 py-2 bg-red-500 hover:bg-red-600 text-black close-modal-btn">Close</button>
