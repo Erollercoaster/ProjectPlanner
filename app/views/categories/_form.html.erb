@@ -25,7 +25,9 @@
         <%= form.submit 'Save', class: 'btn btn-submit rounded-md px-4 py-2 bg-green-500 hover:bg-green-600 text-black hover:cursor-pointer' %>
       </div>
     <% end %>
-       
+        <div>
+        <%= button_to 'Delete', @category, method: :delete, data: { confirm: 'Are you sure?', "turbo-method": :delete, "turbo-confirm": "Are you sure?" }, class: 'btn btn-close rounded-md px-4 py-2 bg-red-500 hover:bg-red-600 text-black' %>
+        </div>
         </div>
       <%= link_to 'Back', category_path, class: 'block mt-4 text-blue-600 hover:underline' %>
   </div>

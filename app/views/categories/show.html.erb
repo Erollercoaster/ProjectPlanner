@@ -1,19 +1,19 @@
 <div class="flex items-center justify-center h-screen flex-col rounded-md">
     <table class="w-2/4 rounded-md text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-        <caption class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white dark:text-white dark:bg-gray-800">
+        <caption class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white dark:text-black dark:bg-white rounded-md">
             <div class="flex flex-col">
     <div class="flex justify-between items-center">
     <div>
         <h1 class="mb-4"><%= @category.name %></h1>
-        <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400"><%= @category.description %></p>
+        <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-700"><%= @category.description %></p>
     </div>
     <div class="flex gap-5">
         <%= link_to "Edit Category", edit_category_path(@category), class: "px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600 text-sm" %>
-        <%= link_to "Add Task", new_category_task_path(@category), class: "px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600 text-sm" %>
+        <%= link_to "Add Task", new_category_task_path(@category), class: "px-4 py-2 rounded-md bg-green-400 text-white hover:bg-green-500 text-sm" %>
     </div>
 </div>
         </caption>
-        <thead class="text-xs text-gray-700 uppercase bg-yellow-200 dark:bg-gray-700 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-700 dark:bg-gray-700 dark:text-gray-400">
             <tr>
                 <th scope="col" class="p-4">
                     <div class="flex items-center">
@@ -40,14 +40,14 @@
         </thead>
         <tbody>
   <% @category.tasks.each do |task| %>
-    <tr id="task-row-<%= task.id %>" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 <%= 'completed' if task.completed %>">
+    <tr id="task-row-<%= task.id %>" class="bg-white dark:white dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-200 <%= 'completed' if task.completed %>">
       <td class="w-4 p-4">
         <div class="flex items-center">
           <%= check_box_tag "completed_tasks[]", task.id, task.completed, class: "task-checkbox appearance-none h-4 w-4 border border-gray-300 rounded checked:bg-blue-500 checked:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-600 dark:checked:bg-blue-500 dark:checked:border-transparent dark:focus:ring-offset-gray-800", data: { task_id: task.id } %>
           <label for="checkbox-table-<%= task.id %>" class="sr-only">checkbox</label>
         </div>
       </td>
-      <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+      <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black rounded-md">
         <%= link_to task.title, category_task_path(@category, task), class: "font-medium text-white-600 dark:text-white-500 hover:underline" %>
     </td>
       </th>
@@ -67,4 +67,5 @@
   <% end %>
 </tbody>
     </table>
+</div>
 </div>

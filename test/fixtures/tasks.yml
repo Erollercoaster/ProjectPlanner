@@ -1,8 +1,8 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  category_id: 1
   id: 1
+  category_id: 1
   title: this is a task
   description: this is a task description
   due_date: 2024-03-12

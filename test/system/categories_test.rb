@@ -6,14 +6,7 @@ class CategoriesTest < ApplicationSystemTestCase
     @category = categories(:one)
     login
   end
-
-  # private
-
-  # def login
-  #   visit root_path
-  #   fill_in "Email", with: @user.email
-  # end
-
+  
   test "visiting the dashboard" do
     
     assert_selector "h2", text: "Total Tasks"
