@@ -1,24 +1,14 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Project Planner
 
-Things you may want to cover:
+This is an application to help organize the upcoming tasks for a user, managing tasks by category basis to help improve a person's workflow.
 
-* Ruby version
+Tech Stack:
+    Ruby on Rails
+    TailwindCSS
+    PostgreSQL
+    Devise
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Testing:
+    System Test

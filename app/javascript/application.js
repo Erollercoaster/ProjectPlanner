@@ -4,11 +4,10 @@ import "controllers"
 
 Turbo.setFormMode("off")
 
-// app/javascript/packs/application.js
 document.addEventListener("DOMContentLoaded", () => {
   const openModalBtn = document.getElementById("open-modal-btn");
   const closeModalBtns = document.querySelectorAll(".close-modal-btn");
-  const modal = document.getElementById("category-modal-form"); // Change this line
+  const modal = document.getElementById("category-modal-form");
 
   openModalBtn.addEventListener("click", () => {
     modal.classList.remove("hidden");
@@ -22,10 +21,8 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-  // Retrieve completed task IDs from localStorage
   let completedTasks = JSON.parse(localStorage.getItem('completedTasks')) || [];
 
-  // Apply strikethrough to completed tasks
   completedTasks.forEach(taskId => {
     const taskRow = document.querySelector(`#task-row-${taskId}`);
     if (taskRow) {
