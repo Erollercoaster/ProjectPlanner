@@ -4,7 +4,7 @@ Project Planner
 
 This is an application to help organize the upcoming tasks for a user, managing tasks by category basis to help improve a person's workflow.
 
-Tech Stack:
+## Tech Stack:
 
    - Ruby on Rails
 
@@ -14,6 +14,10 @@ Tech Stack:
 
    - Devise
 
-Testing:
+
+
+## Testing:
     
    - System Test
+
+
