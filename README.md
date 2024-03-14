@@ -1,6 +1,6 @@
 # README
 
-Project Planner
+## Project Planner
 
 This is an application to help organize the upcoming tasks for a user, managing tasks by category basis to help improve a person's workflow.
 
